@@ -50,6 +50,7 @@ class Header extends Component {
                 Last Updated: {this.props.lastUpdateTime ? this.props.lastUpdateTime : "Error Updating"}
               </p>
              
+              {/* render a custom tooltip to show how to add any tooltip to any element */ }
               <OverlayTrigger
                 placement="right" 
                 overlay={(
@@ -75,9 +76,9 @@ class Header extends Component {
             </div>
           </div>
           
-          {/* Accordian Menu Section */ }
+          {/* Hambuger Menu Section */ }
           {/* ********************** */ }
-          <div className={"col " + styles.endSection}>
+          <div className={"col " + styles.menuSection}>
             <h4>
               Accordian Menu
             </h4>

@@ -21,7 +21,7 @@
   margin: 0px;
 }
 
-.logoSection, .endSection {
+.logoSection, .menuSection {
   flex-grow: 0 !important;
   padding: 0px;  
 }
@@ -55,10 +55,13 @@
 
 @media (max-width: 768px) {
   .logoSection {
-      display: none;
+    display: none;
   }
   .titleSection {
-    align-content: flex-start;
+    order: 1;
+  }
+  .menuSection {
+    order: 0;
   }
 }
 
