@@ -1,0 +1,12 @@
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.menu {
+  position: absolute;
+  width:300px;
+  height: 100%;
+  top:50px; /* temp during development */  
+  background-color: green;
+}

@@ -1,14 +1,18 @@
 // npm imports
-import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
+// custom components
+import HambugerMenu from './HamburgerMenu';
 
 // css imports
 import styles from './css/header.css';
 
-// logo image
+// image imports
 import logo from "../images/virus.jpg";
 import popupIcon from "../images/question-mark.png";
+import hamburgerIcon from "../images/hamburger-icon.png";
 
 /**
  * This component is responsible for displaying the site header.
@@ -79,9 +83,10 @@ class Header extends Component {
           {/* Hambuger Menu Section */ }
           {/* ********************** */ }
           <div className={"col " + styles.menuSection}>
-            <h4>
-              Accordian Menu
-            </h4>
+            <HambugerMenu 
+              slideDirection="left"
+              iconUrl={hamburgerIcon} 
+            />
           </div>
 
         </div>
