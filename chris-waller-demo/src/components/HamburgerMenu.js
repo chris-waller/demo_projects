@@ -73,6 +73,8 @@ class HamburgerMenu extends Component {
         style={{
           right: this.props.slideDirection === slideDirection.LEFT ? "0px" : "",
           left: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "",
+          borderLeftWidth: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "1px",
+          borderRightWidth: this.props.slideDirection === slideDirection.RIGHT ? "1px" : "0px",
         }}
       >
         <img 
@@ -90,11 +92,11 @@ class HamburgerMenu extends Component {
           {menuItems.map(item => {
             return (
               <Link to={item.url} className={styles.menuItem} key={item.url} >
-                <h4
+                <h5
                   style={{
                     textAlign: this.props.slideDirection === slideDirection.LEFT ? "right" : "left",
                   }} 
-                > {item.text} </h4>
+                > {item.text} </h5>
               </Link>
             );
           })}       

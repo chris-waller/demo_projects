@@ -34,7 +34,7 @@ class Header extends Component {
 
         <div className={"row " + styles.row}>          
 
-          {/* home link/icon section */}
+          {/* Home link/icon section */}
           {/* *************************** */}
           <div className={"col " + styles.logoSection}>
             <div className={styles.logoSection}>
@@ -44,7 +44,7 @@ class Header extends Component {
             </div>
           </div>
           
-          {/* site title & update section */}
+          {/* Site title & update section */}
           {/* *************************** */}
           <div className={"col " + styles.titleSection}>
             <h1 className={styles.title}>Chris Waller Demo Site</h1>

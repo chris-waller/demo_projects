@@ -1,6 +1,5 @@
 // npm imports
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 // site layout component
 import Layout from '../components/Layout';
@@ -22,9 +21,6 @@ class Home extends Component {
         {/* Page content below here */}
         {/* *********************** */}
         <p>This is the HOME page</p>
-        <p>
-          <Link to="/dynamic">Navigate to Dynamic Page</Link>
-        </p>
 
       </Layout>
     );

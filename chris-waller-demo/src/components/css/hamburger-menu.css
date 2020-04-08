@@ -1,6 +1,7 @@
 .icon, .cancelIcon {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 .cancelIcon {
   margin: 5px;
@@ -8,11 +9,20 @@
 
 .menu {
   position: fixed;
+  z-index: 1;
   width: 200px;
   height: 100%;
   top: 0px;
-  background-color: gray;
-  border: 1px solid black;
+  border-color: rgb(139, 143, 151);
+  border-style: solid;
+  border-top: 0px;
+  border-bottom: 0px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(77, 120, 177) 35%, rgb(0, 195, 255) 100%);
 }
 
 .menuItems {
@@ -21,16 +31,18 @@
   align-items: end;
 
   margin: 0px;
-  text-decoration: none;
 }
 
 .menuItem {
-  color: black;
+  color: #e9ebf0;
   padding: 5px;
-  width: 160px;  
-  background-color: lightslategray;
-  border-bottom: 1px solid black;  
+  width: 100%;  
+  background-color: transparent;
+  border-bottom: 1px solid rgba(139, 143, 151);  
 }
-.menuItem>h4 {
-  
+.menuItem:first-child {
+  border-top: 1px solid rgba(139, 143, 151);
+}
+.menuItem:hover {
+  background: rgb(94, 126, 168);
 }
