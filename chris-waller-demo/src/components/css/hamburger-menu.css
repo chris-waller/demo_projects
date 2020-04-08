@@ -12,6 +12,8 @@
   z-index: 1;
   width: 200px;
   height: 100%;
+  transform: translate3d(0px, 0, 0);
+  transition: all .2s cubic-bezier(0, 1.26, .8, 1);
   top: 0px;
   border-color: rgb(139, 143, 151);
   border-style: solid;
@@ -23,6 +25,12 @@
 
   background: rgb(2,0,36);
   background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(77, 120, 177) 35%, rgb(0, 195, 255) 100%);
+}
+.menu.hideLeft {
+  transform: translate3d(-200px, 0, 0);  
+}
+.menu.hideRight {
+  transform: translate3d(200px, 0, 0);  
 }
 
 .menuItems {

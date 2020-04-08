@@ -18,7 +18,7 @@ const slideDirection = {
 
 const menuItems = [
   {url: "/", text: "Home"},
-  {url: "/dynamic", text: "Dynamic"},
+  {url: "/dynamic", text: "About this site"},
   {url: "/foobar", text: "Page not Found"},
 ];
 
@@ -66,10 +66,17 @@ class HamburgerMenu extends Component {
   /**
    * Renders the menu.
    */
-  renderMenu() {    
+  renderMenu() {
+    let menuClasses = styles.menu;
+    menuClasses = this.state.menuOpen ? 
+      menuClasses : 
+      menuClasses+= this.props.slideDirection === slideDirection.LEFT ?
+        ` ${styles.hideRight}` : 
+        ` ${styles.hideLeft}`;
+
     return (
       <div 
-        className={styles.menu}
+        className={menuClasses}
         style={{
           right: this.props.slideDirection === slideDirection.LEFT ? "0px" : "",
           left: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "",
@@ -77,14 +84,18 @@ class HamburgerMenu extends Component {
           borderRightWidth: this.props.slideDirection === slideDirection.RIGHT ? "1px" : "0px",
         }}
       >
-        <img 
-          src={cancelIcon}
-          style={{
-            float: this.props.slideDirection,
-          }} 
-          className={styles.cancelIcon}
-          onClick={() => this.toggleMenu(false)}
-        />
+        {/* cancel icon */}
+        <div>
+          <img 
+            src={cancelIcon}
+            style={{
+              float: this.props.slideDirection,
+            }} 
+            className={styles.cancelIcon}
+            title="Close Menu"
+            onClick={() => this.toggleMenu(false)}
+          />
+        </div>
         
         {/* Render the menu items here */}
         {/* ************************** */}
@@ -95,8 +106,11 @@ class HamburgerMenu extends Component {
                 <h5
                   style={{
                     textAlign: this.props.slideDirection === slideDirection.LEFT ? "right" : "left",
-                  }} 
-                > {item.text} </h5>
+                  }}
+                  title={item.text} 
+                > 
+                  {item.text} 
+              </h5>
               </Link>
             );
           })}       
@@ -115,12 +129,10 @@ class HamburgerMenu extends Component {
         <img 
           src={this.props.iconUrl} 
           className={styles.icon}
+          title="Open Menu"
           onClick={() => this.toggleMenu(!this.state.menuOpen)}
-        />
-
-        {/* display menu if appropriate */}
-        {this.state.menuOpen ? this.renderMenu() : null}
-
+        />        
+        {this.renderMenu()}
       </div>
     );
   }
@@ -129,10 +141,11 @@ class HamburgerMenu extends Component {
 
 export default enhanceWithClickOutside(HamburgerMenu);
 
-// must declare all prop types and indicate they're required -- I'm doing this to avoid lazy programming
+// declare all prop types
 HamburgerMenu.propTypes = {  
   slideDirection: PropTypes.oneOf([slideDirection.LEFT, slideDirection.RIGHT]).isRequired,
-  iconUrl:PropTypes.string.isRequired
+  iconUrl: PropTypes.string.isRequired,
+  footerText: PropTypes.string,
 };
 
 // not using default properties -- including this just as a demo to show I'm aware of how a
