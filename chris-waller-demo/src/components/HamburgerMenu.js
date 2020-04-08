@@ -11,6 +11,7 @@ import styles from './css/hamburger-menu.css';
 // image imports
 import cancelIcon from '../images/cancel-icon.png';
 
+// helper enum -- probably want to move this to a config file
 const slideDirection = {
   LEFT: "left",
   RIGHT: "right",
@@ -67,9 +68,12 @@ class HamburgerMenu extends Component {
    * Renders the menu.
    */
   renderMenu() {
+    // figure out which classes to add to the 
     let menuClasses = styles.menu;
     menuClasses = this.state.menuOpen ? 
-      menuClasses : 
+      // menu open
+      menuClasses :
+      // menu closed 
       menuClasses+= this.props.slideDirection === slideDirection.LEFT ?
         ` ${styles.hideRight}` : 
         ` ${styles.hideLeft}`;
@@ -78,6 +82,8 @@ class HamburgerMenu extends Component {
       <div 
         className={menuClasses}
         style={{
+          // could have done the same thing as I did with the class selection above but wanted
+          // to demo the concept of inline styling with javascript logic
           right: this.props.slideDirection === slideDirection.LEFT ? "0px" : "",
           left: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "",
           borderLeftWidth: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "1px",
@@ -145,7 +151,6 @@ export default enhanceWithClickOutside(HamburgerMenu);
 HamburgerMenu.propTypes = {  
   slideDirection: PropTypes.oneOf([slideDirection.LEFT, slideDirection.RIGHT]).isRequired,
   iconUrl: PropTypes.string.isRequired,
-  footerText: PropTypes.string,
 };
 
 // not using default properties -- including this just as a demo to show I'm aware of how a
