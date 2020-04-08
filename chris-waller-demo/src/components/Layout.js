@@ -17,7 +17,7 @@ class Layout extends Component {
    */
   render() {    
     return (
-      <div>
+      <div className={styles.layout}>
           
           {/* the site header */}
           <Header

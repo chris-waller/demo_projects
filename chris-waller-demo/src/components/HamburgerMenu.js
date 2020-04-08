@@ -2,10 +2,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside'
+import { Link } from 'react-router-dom';
 
 
-//css imports
+// css imports
 import styles from './css/hamburger-menu.css';
+
+// image imports
+import cancelIcon from '../images/cancel-icon.png';
 
 const slideDirection = {
   LEFT: "left",
@@ -56,18 +60,51 @@ class HamburgerMenu extends Component {
   /**
    * Renders the menu.
    */
-  renderMenu() {
-    console.log(this.props.slideDirection);
+  renderMenu() {    
     return (
       <div 
         className={styles.menu}
         style={{
-          backgroundColor: "red",
           right: this.props.slideDirection === slideDirection.LEFT ? "0px" : "",
           left: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "",
         }}
       >
-        Hello world
+         <img 
+          src={cancelIcon}
+          style={{
+            float: this.props.slideDirection,
+          }} 
+          className={styles.cancelIcon}
+          onClick={() => this.toggleMenu(false)}
+        />
+        <div className={styles.menuItems}>
+          {/* TODO: pass in array of menu item components to make this component more flexible */}
+          <Link to="/" 
+            className={styles.menuItem}
+            style={{
+              textAlign: !this.props.slideDirection,              
+            }}
+          >
+            <h4>Home</h4>
+          </Link>
+          <Link to="/dynamic" 
+            className={styles.menuItem}
+            style={{
+              textAlign: !this.props.slideDirection,              
+            }}
+          >
+            <h4>Dynamic</h4>
+          </Link>
+          <Link to="foobar" 
+            className={styles.menuItem}
+            style={{
+              textAlign: !this.props.slideDirection,              
+            }}
+          >
+            <h4>Page not Found</h4>
+          </Link>         
+        </div>
+        
       </div>
     );
   }

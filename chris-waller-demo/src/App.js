@@ -104,9 +104,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+    
           <Switch>
-
             {/* Setup all the routes here */ }
             {/* TODO: depending on where this app goes, might be more secure to pass in the
             individual state variables rather than the entire state itself */}
@@ -119,9 +118,8 @@ class App extends Component {
             <Route render={(props) =>
               <NoMatch {...this.state} />} 
             />
-
           </Switch>
-        </div>
+
       </Router>
     );
   }
