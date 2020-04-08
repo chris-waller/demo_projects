@@ -16,6 +16,12 @@ const slideDirection = {
   RIGHT: "right",
 }
 
+const menuItems = [
+  {url: "/", text: "Home"},
+  {url: "/dynamic", text: "Dynamic"},
+  {url: "/foobar", text: "Page not Found"},
+];
+
 /**
  * This component creates a sliding menu with an icon to initiate
  * 
@@ -69,7 +75,7 @@ class HamburgerMenu extends Component {
           left: this.props.slideDirection === slideDirection.RIGHT ? "0px" : "",
         }}
       >
-         <img 
+        <img 
           src={cancelIcon}
           style={{
             float: this.props.slideDirection,
@@ -77,32 +83,21 @@ class HamburgerMenu extends Component {
           className={styles.cancelIcon}
           onClick={() => this.toggleMenu(false)}
         />
+        
+        {/* Render the menu items here */}
+        {/* ************************** */}
         <div className={styles.menuItems}>
-          {/* TODO: pass in array of menu item components to make this component more flexible */}
-          <Link to="/" 
-            className={styles.menuItem}
-            style={{
-              textAlign: !this.props.slideDirection,              
-            }}
-          >
-            <h4>Home</h4>
-          </Link>
-          <Link to="/dynamic" 
-            className={styles.menuItem}
-            style={{
-              textAlign: !this.props.slideDirection,              
-            }}
-          >
-            <h4>Dynamic</h4>
-          </Link>
-          <Link to="foobar" 
-            className={styles.menuItem}
-            style={{
-              textAlign: !this.props.slideDirection,              
-            }}
-          >
-            <h4>Page not Found</h4>
-          </Link>         
+          {menuItems.map(item => {
+            return (
+              <Link to={item.url} className={styles.menuItem} key={item.url} >
+                <h4
+                  style={{
+                    textAlign: this.props.slideDirection === slideDirection.LEFT ? "right" : "left",
+                  }} 
+                > {item.text} </h4>
+              </Link>
+            );
+          })}       
         </div>
         
       </div>
