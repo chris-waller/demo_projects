@@ -143,7 +143,6 @@ class HamburgerMenu extends Component {
    * Render.
    */
   render() {
-    console.log("here: ", this.state.resetMenu);
     return(
       <div>
         <img 

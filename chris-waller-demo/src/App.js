@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import moment from "moment";
+import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "./redux/store";
 
 // import all of the react pages here
 import Home from './pages/Home';
@@ -14,6 +16,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // The date format that will be used when displaying dates throughout the site
 // TODO: need to move this into a common file, state or redux
 const DATE_FORMAT = "dddd, MMMM Do YYYY, h:mm:ss a";
+
+const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 
 /**
  * The main application file for the site.
@@ -35,9 +39,9 @@ class App extends Component {
   }
 
   /**
-   * ComponentWillMount.
+   * ComponentDidMount.
    */
-  componentWillMount() {
+  componentDidMount() {
 
     // create an interval to constantly hit the backend API in order to keep the data up-to-date
     this.interval = setInterval(() => {
@@ -104,8 +108,8 @@ class App extends Component {
    */
   render() {
     return (
-      <Router>
-    
+      <ReduxProvider store={reduxStore}>
+        <Router>
           <Switch>
             {/* Setup all the routes here */ }
             {/* TODO: depending on where this app goes, might be more secure to pass in the
@@ -120,8 +124,8 @@ class App extends Component {
               <NoMatch {...this.state} />} 
             />
           </Switch>
-
-      </Router>
+        </Router>
+      </ReduxProvider>
     );
   }
 }

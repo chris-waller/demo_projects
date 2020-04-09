@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { OverlayTrigger, Tooltip} from 'react-bootstrap';
 
+import ACTIONS from "../redux/actions";
+import { connect } from "react-redux";
+
 
 // custom components
 import HambugerMenu from './HamburgerMenu';
@@ -57,7 +60,6 @@ class Header extends Component {
    * Update the windown dimensions so we can shift the hamburger menu to the left/right as required
    */
   updateWindowDimensions() {
-    // console.log("here: ", window.innerWidth);
     this.setState({ 
       menuSide: window.innerWidth < 640 ? "right" : "left",      
     });
@@ -67,7 +69,7 @@ class Header extends Component {
   /**
    * Render.
    */
-  render() {    
+  render() {
     return (
       
       <div className={"container " + styles.header}>
@@ -135,4 +137,18 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  items: state.items
+});
+
+const mapDispatchToProps = dispatch => ({
+  createItem: item => dispatch(ACTIONS.createItem(item)),
+  deleteItem: id => dispatch(ACTIONS.deleteItem(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
+
+
