@@ -21,6 +21,9 @@
   width: 100%;
   margin: 0px;
 }
+.logoSection, .menuSection, .titleSection {
+  height: 100%;
+}
 
 .logoSection, .menuSection {
   flex-grow: 0 !important;
