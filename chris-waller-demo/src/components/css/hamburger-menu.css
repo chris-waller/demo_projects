@@ -25,6 +25,15 @@
 
   background: rgb(2,0,36);
   background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgb(77, 120, 177) 35%, rgb(0, 195, 255) 100%);
+
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+/* this class aids in hiding the scrool bar */
+.menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 .menu.hideLeft {
   transform: translate3d(-200px, 0, 0);  
