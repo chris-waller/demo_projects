@@ -1,7 +1,8 @@
 // npm imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip, Container } from 'react-bootstrap';
+
 
 // custom components
 import HambugerMenu from './HamburgerMenu';
@@ -24,10 +25,49 @@ import hamburgerIcon from "../images/hamburger-icon.png";
 class Header extends Component {
 
   /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+
+    this.state = { 
+      width: 1200,
+      menuSide: "right", 
+    };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  /**
+   * ComponentDidMount.
+   */
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions.bind(this));
+  }
+
+  /**
+   * ComponentWillUnmount.
+   */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions.bind(this));
+  }
+
+  /**
+   * Update the windown dimensions so we can shift the hamburger menu to the left/right as required
+   */
+  updateWindowDimensions() {
+    // console.log("here: ", window.innerWidth);
+    this.setState({ 
+      menuSide: window.innerWidth < 768 ? "right" : "left",      
+    });
+  }
+
+ 
+  /**
    * Render.
    */
-  render() {
-    // console.log("here", this.props);
+  render() {    
     return (
       
       <div className={"container " + styles.header}>
@@ -84,7 +124,7 @@ class Header extends Component {
           {/* ********************** */ }
           <div className={"col " + styles.menuSection}>
             <HambugerMenu 
-              slideDirection="left"
+              slideDirection={this.state.menuSide}
               iconUrl={hamburgerIcon} 
             />
           </div>

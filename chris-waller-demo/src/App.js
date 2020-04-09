@@ -1,14 +1,15 @@
 // npm imports
 import React, { Component } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-import importedComponent from 'react-imported-component';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from "moment";
 
 // import all of the react pages here
 import Home from './pages/Home';
 import AsyncPage from './pages/DynamicPage';
 import NoMatch from './pages/NoMatch';
+
+// css imports
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // The date format that will be used when displaying dates throughout the site
 // TODO: need to move this into a common file, state or redux

@@ -43,8 +43,20 @@ class HamburgerMenu extends Component {
 
     this.state = {
       menuOpen: false,
+      resetMenu: false,
+      slideDirection: "",
     }
   }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.slideDirection !== prevState.slideDirection){
+      return { 
+        resetMenu: true,
+        slideDirection: nextProps.slideDirection,
+      };
+   }
+   else return { resetMenu: false};
+ }
 
   /**
    * This is a required function for when the user clicks off of the component.
@@ -70,6 +82,7 @@ class HamburgerMenu extends Component {
   renderMenu() {
     // figure out which classes to add to the 
     let menuClasses = styles.menu;
+    menuClasses += this.state.resetMenu ? ` ${styles.reset}   ` : "";
     menuClasses = this.state.menuOpen ? 
       // menu open
       menuClasses :
@@ -130,6 +143,7 @@ class HamburgerMenu extends Component {
    * Render.
    */
   render() {
+    console.log("here: ", this.state.resetMenu);
     return(
       <div>
         <img 

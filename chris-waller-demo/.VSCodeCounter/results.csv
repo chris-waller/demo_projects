@@ -1,0 +1,14 @@
+"filename", "language", "JavaScript", "CSS", "comment", "blank", "total"
+"c:\Software Projects\chris-waller-demo\src\App.js", "JavaScript", 73, 0, 35, 20, 128
+"c:\Software Projects\chris-waller-demo\src\components\HamburgerMenu.js", "JavaScript", 102, 0, 39, 19, 160
+"c:\Software Projects\chris-waller-demo\src\components\Header.js", "JavaScript", 68, 0, 15, 16, 99
+"c:\Software Projects\chris-waller-demo\src\components\Layout.js", "JavaScript", 19, 0, 9, 9, 37
+"c:\Software Projects\chris-waller-demo\src\components\Loading.js", "JavaScript", 5, 0, 0, 2, 7
+"c:\Software Projects\chris-waller-demo\src\components\css\hamburger-menu.css", "CSS", 0, 50, 0, 7, 57
+"c:\Software Projects\chris-waller-demo\src\components\css\header.css", "CSS", 0, 61, 15, 16, 92
+"c:\Software Projects\chris-waller-demo\src\components\css\layout.css", "CSS", 0, 21, 1, 5, 27
+"c:\Software Projects\chris-waller-demo\src\index.js", "JavaScript", 16, 0, 8, 4, 28
+"c:\Software Projects\chris-waller-demo\src\pages\DynamicPage.js", "JavaScript", 17, 0, 0, 3, 20
+"c:\Software Projects\chris-waller-demo\src\pages\Home.js", "JavaScript", 17, 0, 8, 6, 31
+"c:\Software Projects\chris-waller-demo\src\pages\NoMatch.js", "JavaScript", 16, 0, 0, 3, 19
+"Total", "-", 333, 132, 130, 110, 705

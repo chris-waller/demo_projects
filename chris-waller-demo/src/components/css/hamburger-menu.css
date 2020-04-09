@@ -32,6 +32,9 @@
 .menu.hideRight {
   transform: translate3d(200px, 0, 0);  
 }
+.menu.reset {
+  display: none;
+}
 
 .menuItems {
   display: flex;
