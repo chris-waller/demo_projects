@@ -1,7 +1,7 @@
 // npm imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { OverlayTrigger, Tooltip, Container } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip} from 'react-bootstrap';
 
 
 // custom components
@@ -59,7 +59,7 @@ class Header extends Component {
   updateWindowDimensions() {
     // console.log("here: ", window.innerWidth);
     this.setState({ 
-      menuSide: window.innerWidth < 768 ? "right" : "left",      
+      menuSide: window.innerWidth < 640 ? "right" : "left",      
     });
   }
 
