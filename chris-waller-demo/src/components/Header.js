@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { OverlayTrigger, Tooltip} from 'react-bootstrap';
-
-import ACTIONS from "../redux/actions";
 import { connect } from "react-redux";
 
+// redux actions
+import ACTIONS from "../redux/actions";
 
 // custom components
 import HambugerMenu from './HamburgerMenu';
@@ -35,16 +35,17 @@ class Header extends Component {
 
     this.state = { 
       width: 1200,
-      menuSide: "right", 
+      menuSide: "right",
+      lastUpdateTime: "N/A",
     };
 
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);    
   }
 
   /**
    * ComponentDidMount.
    */
-  componentDidMount() {
+  componentDidMount() {    
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions.bind(this));
   }
@@ -54,6 +55,22 @@ class Header extends Component {
    */
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions.bind(this));
+  }
+
+  componentDidUpdate() {
+    // this.props.updateRetrievalTime(this.state.lastUpdateTime);
+  }
+
+  /**
+   * getDerivedStateFromProps.
+   */
+  static getDerivedStateFromProps(nextProps, prevState){
+    if (nextProps.lastUpdateTime !== prevState.lastUpdateTime) {      
+      return {
+        lastUpdateTime: nextProps.lastUpdateTime,
+      }  
+    }
+    return null;
   }
 
   /**
@@ -70,6 +87,7 @@ class Header extends Component {
    * Render.
    */
   render() {
+    console.log("chstore props in header: ", this.props.lastUpdateTimeFromStore);
     return (
       
       <div className={"container " + styles.header}>
@@ -93,7 +111,9 @@ class Header extends Component {
 
             <div className={styles.updateTime}>
               <p className={this.props.updateError ? styles.oldData : styles.currentData}>
-                Last Updated: {this.props.lastUpdateTime ? this.props.lastUpdateTime : "Error Updating"}
+                Last Updated: {this.props.lastUpdateTimeFromStore ? 
+                  this.props.lastUpdateTimeFromStore : 
+                  "Error Updating"}
               </p>
              
               {/* render a custom tooltip to show how to add any tooltip to any element */ }
@@ -138,12 +158,11 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.items
+  lastUpdateTimeFromStore: state.lastUpdateTime,
 });
 
 const mapDispatchToProps = dispatch => ({
-  createItem: item => dispatch(ACTIONS.createItem(item)),
-  deleteItem: id => dispatch(ACTIONS.deleteItem(id))
+  updateRetrievalTime: item => dispatch(ACTIONS.updateRetrievalTime(item)),
 });
 
 export default connect(

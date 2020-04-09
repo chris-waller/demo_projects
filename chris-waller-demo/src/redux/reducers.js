@@ -2,28 +2,23 @@ import ACTIONS from "./actions";
 import _ from "lodash";
 
 const defaultState = {
-  items: []
+  lastUpdateTime: "",
 };
 
 const todoReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case ACTIONS.Types.CREATE_ITEM: {
-      console.log(action);
+    case ACTIONS.Types.UPDATE_RETRIEVAL_TIME: {
+      // console.log(action);
 
-      let item = action.payload;
-      let newItem = { id: state.items.length + 1, description: item };
+      let updateTime = action.payload;
+      // console.log("check", updateTime);     
       let newState = _.cloneDeep(state);
-      newState.items.push(newItem);
-      console.log("adding", newState);
-      return newState;
-    }
-
-    case ACTIONS.Types.DELETE_ITEM: {
-      let newState = _.cloneDeep(state);
-      let index = _.findIndex(newState.items, { id: action.payload });
-      newState.items.splice(index, 1);
-      return newState;
-    }
+      
+      // console.log("adding", newState);
+      return {
+        lastUpdateTime: updateTime,        
+      };
+    } 
 
     default:
       return state;

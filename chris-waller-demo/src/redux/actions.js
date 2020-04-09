@@ -1,21 +1,18 @@
-// types of action
+/* Action Types */
+/* ************ */
 const Types = {
-  CREATE_ITEM: "CREATE_ITEM",
-  DELETE_ITEM: "DELETE_ITEM"
+  UPDATE_RETRIEVAL_TIME: "UPDATE_RETRIEVAL_TIME",  
 };
-// actions
-const createItem = task => ({
-  type: Types.CREATE_ITEM,
-  payload: task
+
+/* Actions */
+/* ******* */
+const updateRetrievalTime = newRetrievalTime => ({
+  type: Types.UPDATE_RETRIEVAL_TIME,
+  payload: newRetrievalTime
 });
 
-const deleteItem = id => ({
-  type: Types.DELETE_ITEM,
-  payload: id
-});
 
 export default {
-  createItem,
-  deleteItem,
+  updateRetrievalTime,
   Types
 };
