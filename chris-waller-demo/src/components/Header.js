@@ -56,23 +56,6 @@ class Header extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions.bind(this));
   }
-
-  componentDidUpdate() {
-    // this.props.updateRetrievalTime(this.state.lastUpdateTime);
-  }
-
-  /**
-   * getDerivedStateFromProps.
-   */
-  static getDerivedStateFromProps(nextProps, prevState){
-    if (nextProps.lastUpdateTime !== prevState.lastUpdateTime) {      
-      return {
-        lastUpdateTime: nextProps.lastUpdateTime,
-      }  
-    }
-    return null;
-  }
-
   /**
    * Update the windown dimensions so we can shift the hamburger menu to the left/right as required
    */
@@ -81,13 +64,11 @@ class Header extends Component {
       menuSide: window.innerWidth < 640 ? "right" : "left",      
     });
   }
-
  
   /**
    * Render.
    */
-  render() {
-    console.log("chstore props in header: ", this.props.lastUpdateTimeFromStore);
+  render() {    
     return (
       
       <div className={"container " + styles.header}>
@@ -111,9 +92,7 @@ class Header extends Component {
 
             <div className={styles.updateTime}>
               <p className={this.props.updateError ? styles.oldData : styles.currentData}>
-                Last Updated: {this.props.lastUpdateTimeFromStore ? 
-                  this.props.lastUpdateTimeFromStore : 
-                  "Error Updating"}
+                Last Updated: {this.props.lastUpdateTime ? this.props.lastUpdateTime : "Error Updating"}
               </p>
              
               {/* render a custom tooltip to show how to add any tooltip to any element */ }
@@ -158,7 +137,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  lastUpdateTimeFromStore: state.lastUpdateTime,
+  lastUpdateTime: state.lastUpdateTime,
 });
 
 const mapDispatchToProps = dispatch => ({

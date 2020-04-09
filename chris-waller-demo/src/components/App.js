@@ -33,15 +33,11 @@ class ReduxWrapper extends Component {
    * ComponentDidMount.
    */
   componentDidMount() {
-
+    this.updateServerData();
     // create an interval to constantly hit the backend API in order to keep the data up-to-date
     this.interval = setInterval(() => {
-      this.callBackendAPI()
-        .then(res => { 
-          this.props.updateRetrievalTime(moment(res.currentTime).format(DATE_FORMAT));         
-        })
-        .catch(err => console.log(err));
-    }, 1000);
+      this.updateServerData();
+    }, 10000);
   }
 
   /**
@@ -52,7 +48,15 @@ class ReduxWrapper extends Component {
     // particular case as this is the main application file but it's good practice so
     // I'll leave it in.
     clearInterval(this.timer);
-  }  
+  }
+
+  updateServerData() {
+    this.callBackendAPI()
+    .then(res => { 
+      this.props.updateRetrievalTime(moment(res.currentTime).format(DATE_FORMAT));         
+    })
+    .catch(err => console.log(err));
+  }
    
    /**
     * Call the node server to hit an API.
