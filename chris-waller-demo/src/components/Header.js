@@ -14,7 +14,7 @@ import HambugerMenu from './HamburgerMenu';
 import styles from './css/header.css';
 
 // image imports
-import logo from "../images/virus.jpg";
+import logo from "../images/home.png";
 import popupIcon from "../images/question-mark.png";
 import hamburgerIcon from "../images/hamburger-icon.png";
 
@@ -78,11 +78,11 @@ class Header extends Component {
           {/* Home link/icon section */}
           {/* *************************** */}
           <div className={"col " + styles.logoSection}>
-            <div className={styles.logoSection}>
+        
               <Link to="/">          
                 <img title="Home" src={logo} className={styles.logo} />          
               </Link>
-            </div>
+          
           </div>
           
           {/* Site title & update section */}
