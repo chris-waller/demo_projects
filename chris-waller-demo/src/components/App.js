@@ -6,7 +6,7 @@ import moment from "moment";
 
 // import all of the react pages here
 import Home from '../pages/Home';
-import AsyncPage from '../pages/DynamicPage';
+import DynamicPage from '../pages/DynamicPage';
 import NoMatch from '../pages/NoMatch';
 
 // The date format that will be used when displaying dates throughout the site
@@ -15,7 +15,6 @@ const DATE_FORMAT = "dddd, MMMM Do YYYY, h:mm:ss a";
 
 // redux actions
 import ACTIONS from "../redux/actions";
-import DynamicPage from '../pages/DynamicPage';
 
 /**
  * The main application file for the site.
@@ -50,6 +49,9 @@ class ReduxWrapper extends Component {
     clearInterval(this.timer);
   }
 
+  /**
+   * Temp methed to call the backend API
+   */
   updateServerData() {
     this.callBackendAPI()
     .then(res => { 

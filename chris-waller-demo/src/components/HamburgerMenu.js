@@ -11,7 +11,7 @@ import styles from './css/hamburger-menu.css';
 // image imports
 import cancelIcon from '../images/cancel-icon.png';
 
-// helper enum -- probably want to move this to a config file
+// helper enum -- TODO: move this to a utility file
 const slideDirection = {
   LEFT: "left",
   RIGHT: "right",
@@ -48,6 +48,9 @@ class HamburgerMenu extends Component {
     }
   }
 
+  /**
+   * getDerivedStateFromProps.
+   */
   static getDerivedStateFromProps(nextProps, prevState){
     if(nextProps.slideDirection !== prevState.slideDirection){
       return { 
